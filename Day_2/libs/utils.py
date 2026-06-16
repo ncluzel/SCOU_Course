@@ -161,10 +161,10 @@ def cross_correlation_matcher_E2(s1, s2, max_lag):
             sub_s2 = s2
         elif lag > 0:
             sub_s1 = s1[lag:]
-            sub_s2 = #s2[...]        
+            #sub_s2 = s2[...] # to complete        
         else:        
-            sub_s1 = #s1[...]
-            sub_s2 = #s2[...] 
+            #sub_s1 = #s1[...] # to complete   
+            #sub_s2 = #s2[...] # to complete   
         
         corr = np.corrcoef(sub_s1, sub_s2)[0, 1]
         corrs.append(corr)
@@ -205,16 +205,16 @@ def cross_correlation_matcher(s1, s2, max_lag=15, prop=0.5, B=1000, use_subsampl
             for lag in lags:  
                 shifted = idx + lag
                 sub_s1 = s1[idx[valid_concat]]
-                sub_s2 = #s2[...] hint: if s1 stays still, then s2 has to be shifted. 
+                #sub_s2 = s2[...] hint: if s1 stays still, then s2 has to be shifted. 
 
                 if use_Pearson:
-                    corr = # ... hint: check cross_correlation_matcher_E2 function
+                    #corr =  ... hint: check cross_correlation_matcher_E2 function
                 else:
-                    corr = # ... find a Python function allowing to compute Spearman's r coefficient. You can find it in a popular library.
+                    #corr =  ... find a Python function allowing to compute Spearman's r coefficient. You can find it in a popular library.
                 corrs.append(corr)
 
             corr_max = np.max(corrs)
-            lag_max = # ... hint: if corr_max is taken from the maximum of correlation, how do we gather lag_max ?
+            #lag_max =  ... hint: if corr_max is taken from the maximum of correlation, how do we gather lag_max ?
 
             boot_lags.append(lag_max)
             boot_corrs.append(corr_max)
