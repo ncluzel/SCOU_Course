@@ -2,20 +2,14 @@ import matplotlib.pyplot as plt
 import scienceplots
 from SCOU_extended_3_1 import *
 
-def model_fit(data, n_sites=1, n_replicates=1):
-
-    # signal smoothing | model's hyperparameters
-    NB_CHAINS = 3
-    TUNING_ITERS = 3000
-    SAMPLING_ITERS = 2000
-    target_accept = 0.95
+def model_fit(data, obs_column, lod_column, NB_CHAINS=3, TUNING_ITERS=3000, SAMPLING_ITERS=2000, target_accept=0.95, n_sites=1, n_replicates=1):
 
     n_steps = data.shape[0]
 
-    observation_matrix = data.loc[::, 'obs'].values
+    observation_matrix = data.loc[::, obs_column].values
     observation_matrix = observation_matrix.reshape(n_steps, n_sites, n_replicates)
 
-    lod_matrix = data.loc[::, 'lod'].values
+    lod_matrix = data.loc[::, lod_column].values
     lod_matrix = lod_matrix.reshape(n_steps, n_sites, n_replicates)
     loq_matrix = None
 
